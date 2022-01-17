@@ -4,6 +4,7 @@ import Bullets from './modules.js/bullets';
 import Minion from './modules.js/ennemies/minion';
 import Boss1 from './modules.js/ennemies/boss1';
 import Sniper from './modules.js/ennemies/sniper';
+import { displayPlayerHp } from './modules.js/assets/infoBar';
 
 /*============= VARIABLES ============================*/
 let scoreDisplay = document.getElementById('score');
@@ -157,6 +158,8 @@ function isCollision(entity, tab) {
     }
 }
 
+
+
 /*==================== FONCTIONS BOUCLE DE JEU ======================================*/
 
 function loop() {
@@ -169,6 +172,7 @@ function loop() {
     // création / Mise à jour position vaisseau
     let player = Player.getInstance();
     drawPlayer();
+    displayPlayerHp(player.hp);
     // context.drawImage(img, shipX, shipY);
     for (let i = 0; i < Enemy.enemyTab.length; i++) {
         for (let j = 0; j < Enemy.enemyTab[i].length; j++) {
@@ -204,7 +208,9 @@ function loop() {
     //     new Sniper(rndX, rndY);
     // }
      if (count % 50000 == 0) {
-         new Boss1(600, 160);
+    //     new Boss1(600, 160);
+         new Sniper(300, 100);
+         new Sniper(900, 100);
     }
 
     //Création des tirs, Stockage dans un tableau
