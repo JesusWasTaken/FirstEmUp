@@ -18,7 +18,6 @@ var leftPressed = false;
 var upPressed = false;
 var downPressed = false;
 var spacePressed = false;
-var dy = 1;
 let count = 0;
 let rndX;
 let rndY;
