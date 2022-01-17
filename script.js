@@ -5,6 +5,7 @@ import Minion from './modules.js/ennemies/minion';
 import Boss1 from './modules.js/ennemies/boss1';
 import Sniper from './modules.js/ennemies/sniper';
 import { displayPlayerHp } from './modules.js/assets/infoBar';
+import Stage from './modules.js/stage';
 
 /*============= VARIABLES ============================*/
 let scoreDisplay = document.getElementById('score');
@@ -163,16 +164,28 @@ function isCollision(entity, tab) {
 /*==================== FONCTIONS BOUCLE DE JEU ======================================*/
 
 function loop() {
+
     if (Player.inGame == false) {
         clearInterval(game);
+    }
+
+    if (Stage.stageTab[0] == null) {
+        let bob = new Stage(1);
+        bob.getNextWave();
+
     }
     // Remise à zéro du canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+     // vérification de l'appel de la prochaine wave
+     if (Enemy.isEmpty()) {
+        console.log("condition checked");
+        Stage.stageTab[0].getNextWave();
+    }
     // création / Mise à jour position vaisseau
     let player = Player.getInstance();
     drawPlayer();
-    displayPlayerHp(player.hp);
+    displayPlayerHp(Player.getInstance().hp);
     // context.drawImage(img, shipX, shipY);
     for (let i = 0; i < Enemy.enemyTab.length; i++) {
         for (let j = 0; j < Enemy.enemyTab[i].length; j++) {
@@ -196,21 +209,9 @@ function loop() {
             for (let j = 0; j < Enemy.enemyTab[i].length; j++) {
                 setTimeout(() => {
                     Enemy.enemyTab[i][j].shoot();
-                }, Math.floor(Math.random()*1000));
+                }, Math.floor(Math.random()*800));
             }
         }
-    }
-
-    // if (count % 200000 == 0) {
-    //     rndX = Math.round(Math.random() * 1180);
-    //     rndY = 0;
-    //     new Minion(rndX, rndY);
-    //     new Sniper(rndX, rndY);
-    // }
-     if (count % 50000 == 0) {
-    //     new Boss1(600, 160);
-         new Sniper(300, 100);
-         new Sniper(900, 100);
     }
 
     //Création des tirs, Stockage dans un tableau

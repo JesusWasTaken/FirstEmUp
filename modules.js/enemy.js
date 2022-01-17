@@ -69,6 +69,14 @@ class Enemy extends Entity {
             }
         }
     }
+
+    static isEmpty() {
+        for (let i = 0; i < Enemy.enemyTab.length;i++) {
+            if (Enemy.enemyTab[i][0] != null) {
+                return false;
+            }
+        }
+    }
 }
 
 export default Enemy;
