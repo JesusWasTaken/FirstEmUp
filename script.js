@@ -197,15 +197,6 @@ function loop() {
         }
     }
 
-    if (count % 200000 == 0) {
-        rndX = Math.round(Math.random() * 1180);
-        rndY = 0;
-        new Minion(rndX, rndY);
-        new Sniper(rndX, rndY);
-    }
-    // if (count % 50000 == 0) {
-    //     new Boss1(600, 160);
-    // }
 
     //Création des tirs, Stockage dans un tableau
 
