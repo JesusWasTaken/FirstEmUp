@@ -170,15 +170,14 @@ function loop() {
     }
 
     if (Stage.stageTab[0] == null) {
-        let bob = new Stage(1);
-        bob.getNextWave();
-
+        new Stage(1);
+        console.log("stage created");
     }
     // Remise à zéro du canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
      // vérification de l'appel de la prochaine wave
-     if (Enemy.isEmpty()) {
+    if (Enemy.isEmpty()) {
         console.log("condition checked");
         Stage.stageTab[0].getNextWave();
     }

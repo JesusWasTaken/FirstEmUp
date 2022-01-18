@@ -76,6 +76,7 @@ class Enemy extends Entity {
                 return false;
             }
         }
+        return true;
     }
 }
 
