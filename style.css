@@ -8,7 +8,7 @@ body {
 }
 
 canvas {
-  background-image: url("Images/spaceBackground.gif");
+  background-image: url("./Images/altBackground.jpg");
   display: block;
   margin: auto;
 }
@@ -25,7 +25,7 @@ canvas {
   color: white;
   align-content: center;
 }
-#player > p{
+#player > p {
   margin-left: 30px;
 }
 
@@ -45,4 +45,48 @@ canvas {
 #myImage {
   width: 50px;
   height: auto;
+}
+
+/********** START BUTTON *********/
+
+#pressStart {
+  background: linear-gradient(to right, #1d2b64, rgb(2, 0, 1));
+  color: white;
+  font-size: 30px;
+  border: 1px solid black;
+  border-radius: 10px;
+  position: absolute;
+  left: 45vw;
+  top: 47vh;
+  padding: 20px;
+}
+
+/********** POST FORM ************/
+
+#postScore {
+  background: linear-gradient(to right, #1d2b64, rgb(2, 0, 1));
+  border: 1px solid black;
+  border-radius: 10px;
+  position: absolute;
+  left: 45vw;
+  top: 47vh;
+  padding: 20px;
+  display: none;
+}
+
+#postScore > form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#finishScore {
+  color: white;
+  font-size: 22px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#scoreInput {
+  display: none;
 }

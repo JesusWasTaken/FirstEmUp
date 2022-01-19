@@ -8,7 +8,9 @@ import { displayPlayerHp } from './modules.js/assets/infoBar';
 import Stage from './modules.js/stage';
 
 /*============= VARIABLES ============================*/
+
 let scoreDisplay = document.getElementById('score');
+let startBtn = document.getElementById("pressStart");
 let img = document.getElementById("myImage");
 let enemyImg = document.getElementById("enemyImg");
 let bossImg = document.getElementById("bossImg");
@@ -25,6 +27,10 @@ let rndX;
 let rndY;
 var game = null;
 scoreDisplay.innerHTML = 0;
+
+/*================= start button =================*/
+
+startBtn.addEventListener("click", gameLaunch, false);
 
 /*================= afficher les entités =========*/
 
@@ -141,6 +147,14 @@ function moveEnemies() {
     }
 }
 
+function gameOver() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    clearInterval(game);
+    document.getElementById("postScore").style.display = "block";
+    document.getElementById("scoreInput").value = Player.score;
+    document.getElementById("finishScore").innerHTML = "Score : "+ Player.score;
+}
+
 /*====================== FONCTIONS GESTION DES HITBOXES =============================*/
 
 // rendu plus générique pour l'utiliser sur les bullets ennemies
@@ -164,17 +178,18 @@ function isCollision(entity, tab) {
 /*==================== FONCTIONS BOUCLE DE JEU ======================================*/
 
 function loop() {
+    // Remise à zéro du canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     if (Player.inGame == false) {
-        clearInterval(game);
+        gameOver();
     }
 
     if (Stage.stageTab[0] == null) {
         new Stage(1);
         console.log("stage created");
     }
-    // Remise à zéro du canvas
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
 
      // vérification de l'appel de la prochaine wave
     if (Enemy.isEmpty()) {
@@ -246,8 +261,8 @@ function loop() {
 
 // Creations des frames toutes les 16 millisecondes
 function gameLaunch() {
+    canvas.style.backgroundImage = 'url("Images/spaceBackground.gif")';
+    startBtn.style.display = "none";
     game = setInterval(loop, 16);
     Player.inGame = true;
 }
-
-gameLaunch();

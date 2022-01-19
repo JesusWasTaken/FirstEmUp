@@ -28,7 +28,6 @@ export default class Player extends Entity {
         this.hp -= x;
         if (this.hp <= 0) {
             Player.inGame = false;
-            alert("Game Over ! Your score : "+Player.score);
         }
     }
 
