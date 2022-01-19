@@ -1,5 +1,5 @@
 import Entity from './entity';
-import Bullets from './bullets';
+import PlayerBullets from './bulletTypes/playerBullets';
 
 let scoreDisplay = document.getElementById('score');
 
@@ -42,13 +42,19 @@ export default class Player extends Entity {
         if (this.isFirable) {
             switch(type) {
                 case 1:
-                    new Bullets(this.posX, this.posY, false, "up");
+                    new PlayerBullets(this.posX, this.posY, false, "up");
                     break;
                 case 2:
-                    new Bullets(this.posX, this.posY, false, "left");
+                    new PlayerBullets(this.posX, this.posY, false, "left");
                     break;
                 case 3:
-                    new Bullets(this.posX, this.posY, false, "right");
+                    new PlayerBullets(this.posX, this.posY, false, "right");
+                    break;
+                case 4:
+                    new PlayerBullets(this.posX, this.posY, false, "upleft");
+                    break;
+                case 5:
+                    new PlayerBullets(this.posX, this.posY, false, "upright");
                     break;
             }
             this.isFirable = false;

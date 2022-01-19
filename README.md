@@ -6,10 +6,7 @@ HOW TO PLAY :
 
 - Z, Q, S, D or Directional arrows to move,
 - P to pause / unpause game.
-- L to shoot up
-- K to shoot upleft
-- M to shoot upright
-(note that you can't use 2 shoot keys simultaneously)
+- L, K, M to shoot (you might wanna do some experiments with that *wink wink*)
 
 . When you are shooting, you move slower
 . Keep killing ennemies without getting hit to increase your score multiplier !

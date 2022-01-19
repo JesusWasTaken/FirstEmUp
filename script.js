@@ -251,6 +251,12 @@ function loop() {
     if (shootRightPressed && shootLeftPressed == false && shootUpPressed == false) {
         player.shoot(3);
     }
+    if (shootUpPressed && shootLeftPressed && shootRightPressed == false) {
+        player.shoot(4);
+    }
+    if (shootUpPressed && shootRightPressed && shootLeftPressed == false) {
+        player.shoot(5);
+    }
     // Fonction mise à jour de la position du vaisseau en fonction des touches pressées
 
     if (upPressed && rightPressed) {
