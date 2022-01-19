@@ -47,7 +47,7 @@ canvas {
   height: auto;
 }
 
-/********** START BUTTON *********/
+/************ BUTTONS *************/
 
 #pressStart {
   background: linear-gradient(to right, #1d2b64, rgb(2, 0, 1));
@@ -61,6 +61,21 @@ canvas {
   padding: 20px;
 }
 
+/* Not a button, I know*/
+#pauseIndicator {
+  background: linear-gradient(to right, #1d2b64, rgb(2, 0, 1));
+  color: white;
+  font-size: 30px;
+  border: 1px solid black;
+  border-radius: 10px;
+  position: absolute;
+  left: 40vw;
+  top: 45vh;
+  padding: 20px;
+  text-align: center;
+  display: none;
+}
+
 /********** POST FORM ************/
 
 #postScore {
@@ -68,8 +83,8 @@ canvas {
   border: 1px solid black;
   border-radius: 10px;
   position: absolute;
-  left: 45vw;
-  top: 47vh;
+  left: 42vw;
+  top: 45vh;
   padding: 20px;
   display: none;
 }

@@ -1,9 +1,6 @@
 import Player from './modules.js/player'
 import Enemy from './modules.js/enemy';
 import Bullets from './modules.js/bullets';
-import Minion from './modules.js/ennemies/minion';
-import Boss1 from './modules.js/ennemies/boss1';
-import Sniper from './modules.js/ennemies/sniper';
 import { displayPlayerHp } from './modules.js/assets/infoBar';
 import Stage from './modules.js/stage';
 
@@ -15,6 +12,8 @@ let img = document.getElementById("myImage");
 let enemyImg = document.getElementById("enemyImg");
 let bossImg = document.getElementById("bossImg");
 let info = document.getElementById('infoGames');
+let pause = document.getElementById("pauseIndicator");
+let isPaused = false;
 var canvas = document.querySelector('canvas');
 var ctx = canvas.getContext('2d');
 var rightPressed = false;
@@ -23,14 +22,42 @@ var upPressed = false;
 var downPressed = false;
 var spacePressed = false;
 let count = 0;
-let rndX;
-let rndY;
 var game = null;
 scoreDisplay.innerHTML = 0;
 
-/*================= start button =================*/
+/*================= event listeners =================*/
 
 startBtn.addEventListener("click", gameLaunch, false);
+
+/*===================== FONCTIONS DE JEU ===================*/
+
+function gameLaunch() {
+    canvas.style.backgroundImage = 'url("Images/spaceBackground.gif")';
+    startBtn.style.display = "none";
+    game = setInterval(loop, 16);
+    Player.inGame = true;
+}
+
+function gamePause() {
+    if(isPaused) {
+        game = setInterval(loop, 16);
+        pause.style.display = "none";
+        isPaused = false;
+    } else {
+        clearInterval(game);
+        pause.style.display = "block";
+        isPaused = true;
+    }
+}
+
+function gameOver() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    clearInterval(game);
+    canvas.style.backgroundImage = 'url("./Images/altBackground.jpg")';
+    document.getElementById("postScore").style.display = "block";
+    document.getElementById("scoreInput").value = Player.score;
+    document.getElementById("finishScore").innerHTML = "Score : "+ Player.score;
+}
 
 /*================= afficher les entités =========*/
 
@@ -67,6 +94,9 @@ function keyDownHandler(e) {
         // same here, factorisation via l'objet
         Player.getInstance().shoot();
         Player.getInstance().speed = 4;
+    } else if (e.key == "p") {
+        e.preventDefault();
+        gamePause();
     }
 }
 
@@ -147,13 +177,6 @@ function moveEnemies() {
     }
 }
 
-function gameOver() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    clearInterval(game);
-    document.getElementById("postScore").style.display = "block";
-    document.getElementById("scoreInput").value = Player.score;
-    document.getElementById("finishScore").innerHTML = "Score : "+ Player.score;
-}
 
 /*====================== FONCTIONS GESTION DES HITBOXES =============================*/
 
@@ -257,12 +280,4 @@ function loop() {
     // Compteur de frames
     count++;
 
-}
-
-// Creations des frames toutes les 16 millisecondes
-function gameLaunch() {
-    canvas.style.backgroundImage = 'url("Images/spaceBackground.gif")';
-    startBtn.style.display = "none";
-    game = setInterval(loop, 16);
-    Player.inGame = true;
 }
