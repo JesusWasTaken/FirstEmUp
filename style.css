@@ -16,15 +16,23 @@ canvas {
 #infoGames {
   width: 1200px;
   margin: auto;
-  font-size: 40px;
+  font-size: 30px;
   display: flex;
   justify-content: space-between;
-  height: 80px;
+  height: 60px;
   background-color: black;
   border: 5px solid yellow;
   color: white;
   align-content: center;
 }
+
+#player {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 #player > p {
   margin-left: 30px;
 }
@@ -61,6 +69,14 @@ canvas {
   padding: 20px;
 }
 
+button {
+  padding: 4px 10px 4px 10px;
+  background-color: rgb(10, 10, 85);
+  color: white;
+  font-size: 18px;
+  border-radius: 5px;
+  box-shadow: none;
+}
 /* Not a button, I know*/
 #pauseIndicator {
   background: linear-gradient(to right, #1d2b64, rgb(2, 0, 1));
@@ -83,7 +99,7 @@ canvas {
   border: 1px solid black;
   border-radius: 10px;
   position: absolute;
-  left: 42vw;
+  left: 43vw;
   top: 45vh;
   padding: 20px;
   display: none;
