@@ -4,8 +4,6 @@ import Player from "../player";
 import Minion from "./minion";
 import Targeted from "../bulletTypes/targeted";
 
-let scoreDisplay = document.getElementById('score');
-
 export default class Boss1 extends Enemy {
     constructor(posX, posY) {
         super(posX, posY, 150, 3, 250, 10);
@@ -46,8 +44,7 @@ export default class Boss1 extends Enemy {
             this.phaseUp();
         }
         if (this.hp == 0) {
-            this.addScore();
-            scoreDisplay.innerHTML = Player.score;
+            Player.getInstance().addScore(this.value);
             this.delete();  
         }
     }

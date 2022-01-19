@@ -1,6 +1,8 @@
 import Entity from './entity';
 import Bullets from './bullets';
 
+let scoreDisplay = document.getElementById('score');
+
 export default class Player extends Entity {
 
     static inGame = false;
@@ -13,6 +15,9 @@ export default class Player extends Entity {
         super(600, 700, 25, 7);
         this.hp = 3;
         this.onHit = 5;
+        this.multiplier = 1;
+        this.attackSpeed = 1;
+        this.isFirable = true;
     }
 
     // fonction d'accès au singleton ou vaisseau joueur
@@ -26,6 +31,7 @@ export default class Player extends Entity {
 
     damage(x) {
         this.hp -= x;
+        this.multiplier = 1;
         if (this.hp <= 0) {
             Player.inGame = false;
         }
@@ -33,6 +39,18 @@ export default class Player extends Entity {
 
     // fonction de tir, qui instancie une bullet a la position actuelle
     shoot() {
-        new Bullets(this.posX, this.posY, false, "up");
+        if (this.isFirable) {
+            new Bullets(this.posX, this.posY, false, "up");
+            this.isFirable = false;
+            setTimeout(() => {
+                this.isFirable = true;
+            },150/this.attackSpeed);
+        }
+    }
+
+    addScore(scoring) {
+        Player.score += Math.floor(scoring*this.multiplier);
+        this.multiplier += 0.1;
+        scoreDisplay.innerHTML = Player.score;
     }
 }

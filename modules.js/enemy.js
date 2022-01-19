@@ -3,9 +3,6 @@ import Bullets from './bullets';
 import Player from './player';
 import patterns from './assets/patterns';
 
-
-let scoreDisplay = document.getElementById('score');
-
 class Enemy extends Entity {
     static count = 0;
     static enemyTab = [
@@ -44,14 +41,9 @@ class Enemy extends Entity {
     damage() {
         this.hp -= 1;
         if (this.hp == 0) {
-            this.addScore();
-            scoreDisplay.innerHTML = Player.score;
+            Player.getInstance().addScore(this.value);
             this.delete();  
         }
-    }
-
-    addScore() {
-        Player.score += this.value;
     }
 
     push() {

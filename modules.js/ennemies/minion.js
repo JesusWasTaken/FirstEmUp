@@ -1,6 +1,4 @@
 import Enemy from '../enemy'
-import Targeted from '../bulletTypes/targeted';
-import Player from '../player';
 
 export default class Minion extends Enemy {
     constructor(posX, posY) {
