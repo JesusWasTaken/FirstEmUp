@@ -5,8 +5,4 @@ export default class Minion extends Enemy {
         super(posX, posY,25,6,4,3);
     }
 
-    push() {
-        Enemy.enemyTab[0].push(this);
-    }
-
 }

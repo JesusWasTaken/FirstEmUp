@@ -10,7 +10,6 @@ let scoreDisplay = document.getElementById('score');
 let startBtn = document.getElementById("pressStart");
 let img = document.getElementById("myImage");
 let enemyImg = document.getElementById("enemyImg");
-let bossImg = document.getElementById("bossImg");
 let info = document.getElementById('infoGames');
 let pause = document.getElementById("pauseIndicator");
 let isPaused = false;
@@ -20,7 +19,9 @@ var rightPressed = false;
 var leftPressed = false;
 var upPressed = false;
 var downPressed = false;
-var spacePressed = false;
+var shootUpPressed = false;
+var shootLeftPressed = false;
+var shootRightPressed = false;
 let count = 0;
 var game = null;
 scoreDisplay.innerHTML = 0;
@@ -63,7 +64,6 @@ function gameOver() {
 
 enemyImg.style.display = "none";
 img.style.display = "none";
-bossImg.style.display = "none";
 
 function drawPlayer() {
     // update du drawPlayer, il a simplement a récupérer les coordonnées actuelles
@@ -88,9 +88,12 @@ function keyDownHandler(e) {
         upPressed = true;
     } else if (e.key == "s" || e.key == "ArrowDown") {
         downPressed = true;
-    } else if (e.key == "n") {
-        spacePressed = true;
-        Player.getInstance().speed = 4;
+    } else if (e.key == "l") {
+        shootUpPressed = true;
+    } else if (e.key == "k") {
+        shootLeftPressed = true;
+    } else if (e.key == "m") {
+        shootRightPressed = true;
     } else if (e.key == "p") {
         e.preventDefault();
         gamePause();
@@ -106,9 +109,12 @@ function keyUpHandler(e) {
         upPressed = false;
     } else if (e.key == "s" || e.key == "ArrowDown") {
         downPressed = false;
-    } else if (e.key == "n") {
-        spacePressed = false;
-        Player.getInstance().speed = 7;
+    } else if (e.key == "l") {
+        shootUpPressed = false;
+    } else if (e.key == "k") {
+        shootLeftPressed = false;
+    } else if (e.key == "m") {
+        shootRightPressed = false;
     }
 }
 
@@ -142,25 +148,11 @@ function moveBullets(tab) {
 
 function drawEnemies() {
 
-    // affiche les minions
-    for (let m = 0; m < Enemy.enemyTab[0].length; m++) {
-        ctx.beginPath();
-        ctx.drawImage(enemyImg, Enemy.enemyTab[0][m].posX - 25, Enemy.enemyTab[0][m].posY - 25, 50, 50);
-        ctx.closePath();
-    }
-
-    // affiche les snipers
-    for (let s = 0; s < Enemy.enemyTab[1].length; s++) {
-        ctx.beginPath();
-        ctx.drawImage(enemyImg, Enemy.enemyTab[1][s].posX - Enemy.enemyTab[1][s].radius, Enemy.enemyTab[1][s].posY - Enemy.enemyTab[1][s].radius, Enemy.enemyTab[1][s].radius*2, Enemy.enemyTab[1][s].radius*2);
-        ctx.closePath();
-    }
-
     // affiche les boss, seront toujours le dernier sous tableau de enemyTab
-    for (let b = 0; b < Enemy.enemyTab[Enemy.enemyTab.length-1].length; b++) {
-        let current = Enemy.enemyTab[Enemy.enemyTab.length-1][b];
+    for (let i = 0; i < Enemy.enemyTab.length; i++) {
+        let current = Enemy.enemyTab[i];
         ctx.beginPath();
-        ctx.drawImage(bossImg, current.posX - current.radius, current.posY - current.radius, current.radius*2, current.radius*2);
+        ctx.drawImage(enemyImg, current.posX - current.radius, current.posY - current.radius, current.radius*2, current.radius*2);
         ctx.closePath();
     }
 
@@ -168,9 +160,7 @@ function drawEnemies() {
 
 function moveEnemies() {
     for (let i = 0; i < Enemy.enemyTab.length; i++) {
-        for (let j = 0; j < Enemy.enemyTab[i].length; j++) {
-            Enemy.enemyTab[i][j].getNextMove();
-        }
+        Enemy.enemyTab[i].getNextMove();
     }
 }
 
@@ -213,22 +203,18 @@ function loop() {
 
      // vérification de l'appel de la prochaine wave
     if (Enemy.isEmpty()) {
-        console.log("condition checked");
         Stage.stageTab[0].getNextWave();
     }
+
     // création / Mise à jour position vaisseau
     let player = Player.getInstance();
     drawPlayer();
     displayPlayerHp(Player.getInstance().hp);
     // context.drawImage(img, shipX, shipY);
     for (let i = 0; i < Enemy.enemyTab.length; i++) {
-        for (let j = 0; j < Enemy.enemyTab[i].length; j++) {
-            isCollision(Enemy.enemyTab[i][j], Bullets.goodBullets);
-        }
+        isCollision(Enemy.enemyTab[i], Bullets.goodBullets);
     }
-    for (let i = 0; i<Enemy.enemyTab.length;i++) {
-        isCollision(player, Enemy.enemyTab[i]);
-    }
+    isCollision(player, Enemy.enemyTab);
     moveEnemies();
     drawEnemies();
     moveBullets(Bullets.goodBullets);
@@ -240,16 +226,30 @@ function loop() {
     if (count % 60 == 0) {
 
         for (let i = 0; i < Enemy.enemyTab.length; i++) {
-            for (let j = 0; j < Enemy.enemyTab[i].length; j++) {
-                setTimeout(() => {
-                    Enemy.enemyTab[i][j].shoot();
-                }, Math.floor(Math.random()*800));
-            }
+            
+            setTimeout(() => {
+                Enemy.enemyTab[i].shoot();
+            }, Math.floor(Math.random()*800));
+            
         }
     }
 
-    if (spacePressed) {
-        player.shoot();
+    // Shoot keys handlers
+
+    if (shootUpPressed || shootLeftPressed || shootRightPressed) {
+        Player.getInstance().speed = 4;
+    } else {
+        Player.getInstance().speed = 7;
+    }
+
+    if (shootUpPressed && shootLeftPressed == false && shootRightPressed == false) {
+        player.shoot(1);
+    }
+    if (shootLeftPressed && shootUpPressed == false && shootRightPressed == false) {
+        player.shoot(2);
+    }
+    if (shootRightPressed && shootLeftPressed == false && shootUpPressed == false) {
+        player.shoot(3);
     }
     // Fonction mise à jour de la position du vaisseau en fonction des touches pressées
 

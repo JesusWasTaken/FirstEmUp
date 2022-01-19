@@ -38,9 +38,19 @@ export default class Player extends Entity {
     }
 
     // fonction de tir, qui instancie une bullet a la position actuelle
-    shoot() {
+    shoot(type) {
         if (this.isFirable) {
-            new Bullets(this.posX, this.posY, false, "up");
+            switch(type) {
+                case 1:
+                    new Bullets(this.posX, this.posY, false, "up");
+                    break;
+                case 2:
+                    new Bullets(this.posX, this.posY, false, "left");
+                    break;
+                case 3:
+                    new Bullets(this.posX, this.posY, false, "right");
+                    break;
+            }
             this.isFirable = false;
             setTimeout(() => {
                 this.isFirable = true;

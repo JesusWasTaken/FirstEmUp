@@ -49,10 +49,6 @@ export default class Boss1 extends Enemy {
         }
     }
 
-    push() {
-        Enemy.enemyTab[1].push(this);
-    }
-
     phaseUp() {
         this.phase += 1;
         if (this.phase == 2) {
