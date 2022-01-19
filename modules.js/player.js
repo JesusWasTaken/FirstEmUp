@@ -44,7 +44,7 @@ export default class Player extends Entity {
             this.isFirable = false;
             setTimeout(() => {
                 this.isFirable = true;
-            },150/this.attackSpeed);
+            },120/this.attackSpeed);
         }
     }
 
