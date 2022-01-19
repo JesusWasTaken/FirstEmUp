@@ -90,9 +90,6 @@ function keyDownHandler(e) {
         downPressed = true;
     } else if (e.key == "n") {
         spacePressed = true;
-
-        // same here, factorisation via l'objet
-        Player.getInstance().shoot();
         Player.getInstance().speed = 4;
     } else if (e.key == "p") {
         e.preventDefault();
@@ -251,12 +248,9 @@ function loop() {
         }
     }
 
-    //Création des tirs, Stockage dans un tableau
-
-    if (spacePressed && count % 7 == 0) {
+    if (spacePressed) {
         player.shoot();
     }
-
     // Fonction mise à jour de la position du vaisseau en fonction des touches pressées
 
     if (upPressed && rightPressed) {
