@@ -1,4 +1,5 @@
 import Enemy from "../enemy";
+import Bullets from "../bullets";
 
 
 export default class Corvete extends Enemy {

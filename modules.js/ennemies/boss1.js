@@ -3,6 +3,7 @@ import Bullets from "../bullets";
 import Player from "../player";
 import Minion from "./minion";
 import Targeted from "../bulletTypes/targeted";
+import { boss1Patterns } from "../assets/patterns";
 
 export default class Boss1 extends Enemy {
     constructor(posX, posY) {
@@ -10,6 +11,7 @@ export default class Boss1 extends Enemy {
         this.value = 1000;
         this.phase = 1;
         this.threshold = this.hp / 2;
+        this.pattern = boss1Patterns;
     }
 
     shoot() {

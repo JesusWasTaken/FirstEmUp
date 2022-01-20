@@ -6,7 +6,8 @@ HOW TO PLAY :
 
 - Z, Q, S, D or Directional arrows to move,
 - P to pause / unpause game.
-- L, K, M to shoot
+- K to shoot
+- L to get a small speed boost
 
 . When you are shooting, you move slower
 . If you collide with an ennemy, you'll die

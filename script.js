@@ -21,8 +21,7 @@ var leftPressed = false;
 var upPressed = false;
 var downPressed = false;
 var shootUpPressed = false;
-var shootLeftPressed = false;
-var shootRightPressed = false;
+var boostPressed = false;
 let count = 0;
 var game = null;
 scoreDisplay.innerHTML = 0;
@@ -89,12 +88,10 @@ function keyDownHandler(e) {
         upPressed = true;
     } else if (e.key == "s" || e.key == "ArrowDown") {
         downPressed = true;
-    } else if (e.key == "l") {
-        shootUpPressed = true;
     } else if (e.key == "k") {
-        shootLeftPressed = true;
-    } else if (e.key == "m") {
-        shootRightPressed = true;
+        shootUpPressed = true;
+    } else if (e.key == "l") {
+        boostPressed = true;
     } else if (e.key == "p") {
         e.preventDefault();
         gamePause();
@@ -110,12 +107,10 @@ function keyUpHandler(e) {
         upPressed = false;
     } else if (e.key == "s" || e.key == "ArrowDown") {
         downPressed = false;
-    } else if (e.key == "l") {
-        shootUpPressed = false;
     } else if (e.key == "k") {
-        shootLeftPressed = false;
-    } else if (e.key == "m") {
-        shootRightPressed = false;
+        shootUpPressed = false;
+    } else if (e.key == "l") {
+        boostPressed = false;
     }
 }
 
@@ -197,12 +192,7 @@ function loop() {
     if (Player.inGame == false) {
         gameOver();
     }
-
-    // if (Stage.stageTab[0] == null) {
-    //     Stage.initStages();
-    // }
     
-
      // vérification de l'appel de la prochaine wave
     if (Enemy.isEmpty()) {
         Stage.stageTab[0].getNextWave();
@@ -238,21 +228,14 @@ function loop() {
 
     // Shoot keys handlers
 
-    if (shootUpPressed || shootLeftPressed || shootRightPressed) {
-        Player.getInstance().speed = 4;
-    } else {
-        Player.getInstance().speed = 7;
+    if (shootUpPressed) {
+        player.shoot();
     }
 
-    if (shootUpPressed && shootLeftPressed == false && shootRightPressed == false) {
-        player.shoot(1);
+    if (boostPressed) {
+        player.boost();
     }
-    if (shootLeftPressed && shootUpPressed == false && shootRightPressed == false) {
-        player.shoot(2);
-    }
-    if (shootRightPressed && shootLeftPressed == false && shootUpPressed == false) {
-        player.shoot(3);
-    }
+    
     // Fonction mise à jour de la position du vaisseau en fonction des touches pressées
 
     if (upPressed && rightPressed) {
