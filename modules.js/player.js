@@ -44,18 +44,14 @@ export default class Player extends Entity {
                 case 1:
                     new PlayerBullets(this.posX, this.posY, false, "up");
                     break;
-                case 2:
-                    new PlayerBullets(this.posX, this.posY, false, "left");
-                    break;
-                case 3:
-                    new PlayerBullets(this.posX, this.posY, false, "right");
-                    break;
-                case 4:
-                    new PlayerBullets(this.posX, this.posY, false, "upleft");
-                    break;
-                case 5:
-                    new PlayerBullets(this.posX, this.posY, false, "upright");
-                    break;
+                // case 2:
+                //     new PlayerBullets(this.posX, this.posY, false, "upleft");
+                //     break;
+                // case 3:
+                //     new PlayerBullets(this.posX, this.posY, false, "upright");
+                //     break;
+                default:
+                    console.log("error : reached default in player shoot");
             }
             this.isFirable = false;
             setTimeout(() => {

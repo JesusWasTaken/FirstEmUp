@@ -3,6 +3,7 @@ import Enemy from './modules.js/enemy';
 import Bullets from './modules.js/bullets';
 import { displayPlayerHp } from './modules.js/assets/infoBar';
 import Stage from './modules.js/stage';
+import Stage1 from './modules.js/stages/stage1';
 
 /*============= VARIABLES ============================*/
 
@@ -183,7 +184,9 @@ function isCollision(entity, tab) {
     }
 }
 
+// Initialisation des données de jeu
 
+new Stage1();
 
 /*==================== FONCTIONS BOUCLE DE JEU ======================================*/
 
@@ -195,10 +198,9 @@ function loop() {
         gameOver();
     }
 
-    if (Stage.stageTab[0] == null) {
-        new Stage(1);
-        console.log("stage created");
-    }
+    // if (Stage.stageTab[0] == null) {
+    //     Stage.initStages();
+    // }
     
 
      // vérification de l'appel de la prochaine wave
@@ -250,12 +252,6 @@ function loop() {
     }
     if (shootRightPressed && shootLeftPressed == false && shootUpPressed == false) {
         player.shoot(3);
-    }
-    if (shootUpPressed && shootLeftPressed && shootRightPressed == false) {
-        player.shoot(4);
-    }
-    if (shootUpPressed && shootRightPressed && shootLeftPressed == false) {
-        player.shoot(5);
     }
     // Fonction mise à jour de la position du vaisseau en fonction des touches pressées
 
