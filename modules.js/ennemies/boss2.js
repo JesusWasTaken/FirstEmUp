@@ -2,6 +2,7 @@ import { boss2Patterns } from "../assets/patterns";
 import Targeted from "../bulletTypes/targeted";
 import Enemy from "../enemy";
 import Entity from "../entity";
+import Player from "../player";
 
 
 export default class Boss2 extends Enemy {
@@ -11,9 +12,11 @@ export default class Boss2 extends Enemy {
         this.phase = 1;
         this.threshold = this.hp / 2;
         this.pattern = boss2Patterns;
+        this.bottomBorder = 300;
     }
 
     shoot() {
+        
         for(let i = 0; i<= 5; i++) {
             setTimeout(() => {
                 if (this.posX > Entity.canvas.width /2) {
@@ -24,5 +27,9 @@ export default class Boss2 extends Enemy {
                 
             },i*60);
         }
+
+        setTimeout(() => {
+            new Targeted(this.posX, this.posY, true, Player.getInstance().posX, Player.getInstance().posY);
+        }, 400);
     }
 }

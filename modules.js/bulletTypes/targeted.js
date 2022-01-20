@@ -5,7 +5,6 @@ export default class Targeted extends Bullets {
         super(posX, posY, enemy);
         this.targetX = targetX;
         this.targetY = targetY;
-        console.log("targeting X = "+this.targetX+" Y = "+this.targetY);
         this.getVector();    
     }
 
