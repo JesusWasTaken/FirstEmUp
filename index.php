@@ -46,7 +46,7 @@
 
     </div>
     <div id="pauseIndicator">
-        Game Paused<br> Press "P" to unpause
+        Game Paused<br> Press "P" to resume
     </div>
     <div id="pressStart">
         Start

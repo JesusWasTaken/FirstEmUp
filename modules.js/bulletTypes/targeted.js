@@ -1,9 +1,11 @@
 import Bullets from "../bullets";
 
 export default class Targeted extends Bullets {
-    constructor(posX, posY, enemy, target) {
+    constructor(posX, posY, enemy, targetX, targetY) {
         super(posX, posY, enemy);
-        this.target = target;
+        this.targetX = targetX;
+        this.targetY = targetY;
+        console.log("targeting X = "+this.targetX+" Y = "+this.targetY);
         this.getVector();    
     }
 
@@ -13,8 +15,8 @@ export default class Targeted extends Bullets {
     }
 
     getVector() {
-        let vX = this.target.posX-this.posX;
-        let vY = this.target.posY-this.posY;
+        let vX = this.targetX-this.posX;
+        let vY = this.targetY-this.posY;
 
         let l = Math.sqrt(vX*vX+vY*vY);
 
