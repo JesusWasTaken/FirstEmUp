@@ -76,7 +76,7 @@ export default class Player extends Entity {
     slowed(bool){
         if (this.isSlowable == true) {
             if (bool) {
-                this.speed = this.initSpeed/2;
+                this.speed = this.initSpeed/1.8;
             } else {
                 this.speed = this.initSpeed;
             }
