@@ -34,4 +34,20 @@ export default class Boss2 extends Enemy {
             new Targeted(this.posX, this.posY, true, Player.getInstance().posX, Player.getInstance().posY);
         }, 400);
     }
+
+    damage() {
+        this.hp -= 1;
+        if (this.hp <= this.threshold) {
+            this.phaseUp();
+        }
+        if (this.hp == 0) {
+            Player.getInstance().addScore(this.value);
+            Player.getInstance().attackSpeed *= 1.5;
+            this.delete();  
+        }
+    }
+
+    phaseUp() {
+
+    }
 }

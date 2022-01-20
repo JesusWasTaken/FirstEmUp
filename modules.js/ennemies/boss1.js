@@ -47,6 +47,7 @@ export default class Boss1 extends Enemy {
         }
         if (this.hp == 0) {
             Player.getInstance().addScore(this.value);
+            Player.getInstance().attackSpeed *= 1.5;
             this.delete();  
         }
     }
