@@ -34,7 +34,7 @@ const boss2Patterns = [
     ["right ","right","right"," right", " right" , " right" , " right" , " right" , "right" , "right"],
     ["right" ,"right" ,"right" ,"right" ,"right" ,"right" ,"right" ,"right" ,"right" ,"right" ,"right" ,"right" ,"right" ,"right" ,"right" ,"right" ,"right" ,"right" ,"right"],
     ["left "," left","left ","left ", "left " , "left " , "left " , "left " , "left " , "left " , "left " , "left " , "left " , "left " , "left "],
-    ["up "," "," "," ", " " , " " , " " , " " , " " , " " , " " , " " , " " , " " , " ", " ", " ", " ", " up"]
+    ["up "," "," "," ", " " , " " , " " , " " , " " , " " , " ", " ", " ", " " , " " , " " , " " , " ", " ", " ", " ", " up"]
 ]
 
 export { defaultPatterns, sniperPatterns, boss1Patterns, boss2Patterns };
