@@ -3,6 +3,7 @@ import Boss1 from "../ennemies/boss1";
 import Corvete from "../ennemies/corvete";
 import Minion from "../ennemies/minion";
 import Sniper from "../ennemies/sniper";
+import Boss2 from "../ennemies/boss2";
 
 
 export default class Stage1 extends Stage {
@@ -11,9 +12,10 @@ export default class Stage1 extends Stage {
     spawnWave() {
         switch(this.wave) {
             case 1:
-                new Minion(300, 60);
-                new Minion(600, 60);
-                new Minion(900, 60);
+                new Boss2(600);
+                // new Minion(300, 60);
+                // new Minion(600, 60);
+                // new Minion(900, 60);
                 break;
             case 2:
                 new Minion(300, 60);

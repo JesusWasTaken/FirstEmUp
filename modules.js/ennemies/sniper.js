@@ -12,6 +12,6 @@ export default class Sniper extends Enemy {
     }
 
     shoot() {
-        new Targeted(this.posX, this.posY, true, Player.getInstance());
+        new Targeted(this.posX, this.posY, true, Player.getInstance().posX, Player.getInstance().posY);
     }
 }

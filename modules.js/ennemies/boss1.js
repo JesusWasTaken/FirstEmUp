@@ -31,11 +31,11 @@ export default class Boss1 extends Enemy {
                 new Bullets(this.posX + 50, this.posY + 100, true, "down");
             }, 200);
         } else {
-            new Targeted(this.posX - 50, this.posY + 100, true, Player.getInstance());
-            new Targeted(this.posX + 50, this.posY + 100, true, Player.getInstance());
+            new Targeted(this.posX - 50, this.posY + 100, true, Player.getInstance().posX, Player.getInstance().posY);
+            new Targeted(this.posX + 50, this.posY + 100, true, Player.getInstance().posX, Player.getInstance().posY);
             setTimeout(() => {
-                new Targeted(this.posX - 50, this.posY + 100, true, Player.getInstance());
-                new Targeted(this.posX + 50, this.posY + 100, true, Player.getInstance());
+                new Targeted(this.posX - 50, this.posY + 100, true, Player.getInstance().posX, Player.getInstance().posY);
+                new Targeted(this.posX + 50, this.posY + 100, true, Player.getInstance().posX, Player.getInstance().posY);
             }, 200);
         }   
     }

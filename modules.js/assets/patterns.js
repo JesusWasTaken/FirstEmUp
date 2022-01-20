@@ -29,4 +29,10 @@ const boss1Patterns = [
     ["downright","downright","downright","downright","downright","downright","downright","downright","downright","downright","downright","downright","downright","downright","downright"]
 ]
 
-export { defaultPatterns, sniperPatterns, boss1Patterns };
+const boss2Patterns = [
+    ["left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left","left"],
+    ["right","right","right","right","right","right","right","right","right","right","right","right","right","right","right","right","right","right","right","right","right","right","right","right","right","right","right","right"],
+    [" "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "],
+]
+
+export { defaultPatterns, sniperPatterns, boss1Patterns, boss2Patterns };
