@@ -19,12 +19,14 @@ export default class Boss2 extends Enemy {
         
         for(let i = 0; i<= 5; i++) {
             setTimeout(() => {
-                if (this.posX > Entity.canvas.width /2) {
+                if (this.posX > Entity.canvas.width /2) 
+                {
                     new Targeted(this.posX, this.posY, true, Entity.canvas.width*(i/5), Entity.canvas.height);
-                } else {
+                } 
+                else 
+                {
                     new Targeted(this.posX, this.posY, true, Entity.canvas.width - Entity.canvas.width*(i/5), Entity.canvas.height);
                 }  
-                
             },i*60);
         }
 
