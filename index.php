@@ -1,3 +1,4 @@
+<!-- Route pour notre base de donnée -->
 <?php
     error_reporting(E_ALL);
     require('./connect.php');
@@ -41,16 +42,16 @@
             </div>
         </div>
         <canvas width="1200" height="772"></canvas>
-        
-
-
     </div>
+
     <div id="pauseIndicator">
         Game Paused<br> Press "P" to unpause
     </div>
+
     <div id="pressStart">
         Start
     </div>
+
     <div id="postScore">
         <form method="post" action="index.php">
             <input type="text" name="name" placeholder="entrez votre nom" required>
@@ -62,6 +63,7 @@
     
         </form>
     </div>
+    
     <div id="hidden">
         <img id="myImage" src="/Images/ship.png">
         <img id="enemyImg" src="Images/enemyIcon.png">

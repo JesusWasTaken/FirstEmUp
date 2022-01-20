@@ -14,3 +14,5 @@ HOW TO PLAY :
 . Keep killing ennemies without getting hit to increase your score multiplier !
 
 The game records highscores on a database to display them. May the best player win !
+
+Credits : Jesus, Skunkoff, Morgane and Akinelo.
