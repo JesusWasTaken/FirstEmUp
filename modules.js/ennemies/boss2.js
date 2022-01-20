@@ -13,7 +13,6 @@ export default class Boss2 extends Enemy {
         this.threshold = this.hp / 2;
         this.pattern = boss2Patterns;
         this.getNextMove();
-        this.bottomBorder = 300;
     }
 
     shoot() {
