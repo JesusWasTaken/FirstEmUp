@@ -4,6 +4,7 @@ import Bullets from './modules.js/bullets';
 import { displayPlayerHp } from './modules.js/assets/infoBar';
 import Stage from './modules.js/stage';
 import Stage1 from './modules.js/stages/stage1';
+import Stage2 from './modules.js/stages/stage2';
 
 /*============= VARIABLES ============================*/
 
@@ -182,6 +183,7 @@ function isCollision(entity, tab) {
 // Initialisation des données de jeu
 
 new Stage1();
+new Stage2();
 
 /*==================== FONCTIONS BOUCLE DE JEU ======================================*/
 

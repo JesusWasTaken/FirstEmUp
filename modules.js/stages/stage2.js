@@ -1,18 +1,19 @@
 import Stage from "../stage";
-import Boss1 from "../ennemies/boss1";
+import Cruiser from "../ennemies/cruiser";
 import Corvete from "../ennemies/corvete";
 import Minion from "../ennemies/minion";
 import Sniper from "../ennemies/sniper";
+import Boss2 from "../ennemies/boss2";
 
 
-export default class Stage1 extends Stage {
+export default class Stage2 extends Stage {
     
 
     spawnWave() {
         switch(this.wave) {
             case 1:
                 new Minion(300, 60);
-                new Minion(600, 60);
+                new Corvete(600, 70);
                 new Minion(900, 60);
                 break;
             case 2:
@@ -34,16 +35,14 @@ export default class Stage1 extends Stage {
                 new Minion(750, 120);
                 break;
             case 5:
-                new Corvete(600, 72);
+                new Cruiser(600, 90);
                 break;
             case 6:
                 new Minion(100, 60);
                 new Minion(200, 60);
                 new Minion(300, 60);
                 new Minion(400, 60);
-                new Minion(500, 60);
-                new Minion(600, 60);
-                new Minion(700, 60);
+                new Corvete(600, 80);
                 new Minion(800, 60);
                 new Minion(900, 60);
                 new Minion(1000, 60);
@@ -55,7 +54,7 @@ export default class Stage1 extends Stage {
                 new Minion(600, 120);
                 new Minion(700, 120);
                 new Minion(800, 120);
-                new Corvete(600, 80);
+                new Cruiser(600, 90);
                 break;
             case 8:
                 new Minion(450, 50);
@@ -68,12 +67,12 @@ export default class Stage1 extends Stage {
             case 9:
                 new Minion(250,100);
                 new Sniper(200,50);
-                new Corvete(600, 80);
+                new Cruiser(600, 90);
                 new Sniper(1000,50);
                 new Minion(950, 100);
                 break;
             case 10:
-                new Boss1(600, 310);
+                new Boss2(600);
                 break;
             default:
                 console.log("Launching next stage");
