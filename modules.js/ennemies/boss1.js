@@ -3,8 +3,7 @@ import Bullets from "../bullets";
 import Player from "../player";
 import Minion from "./minion";
 import Targeted from "../bulletTypes/targeted";
-
-let scoreDisplay = document.getElementById('score');
+import { boss1Patterns } from "../assets/patterns";
 
 export default class Boss1 extends Enemy {
     constructor(posX, posY) {
@@ -12,6 +11,7 @@ export default class Boss1 extends Enemy {
         this.value = 1000;
         this.phase = 1;
         this.threshold = this.hp / 2;
+        this.pattern = boss1Patterns;
     }
 
     shoot() {
@@ -46,14 +46,9 @@ export default class Boss1 extends Enemy {
             this.phaseUp();
         }
         if (this.hp == 0) {
-            this.addScore();
-            scoreDisplay.innerHTML = Player.score;
+            Player.getInstance().addScore(this.value);
             this.delete();  
         }
-    }
-
-    push() {
-        Enemy.enemyTab[1].push(this);
     }
 
     phaseUp() {

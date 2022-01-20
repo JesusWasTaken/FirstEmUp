@@ -1,9 +1,4 @@
 
-import Boss1 from "./ennemies/boss1";
-import Minion from "./ennemies/minion";
-import Sniper from "./ennemies/sniper";
-
-
 export default class Stage {
 
     static stageTab = [];
@@ -11,43 +6,30 @@ export default class Stage {
     constructor() {
         this.wave = 0;
         Stage.stageTab.push(this);
+        this.isSpawnable = true;
     }
 
     getNextWave() {
-        this.wave += 1;
-        this.spawnWave();
+        if (this.isSpawnable) {
+            this.wave += 1;
+            this.isSpawnable = false;
+            setTimeout(() => {
+                this.spawnWave();
+                this.isSpawnable = true;
+            },1000);
+        }
     }
 
     spawnWave() {
-        switch(this.wave) {
-            case 1:
-                new Minion(300, 60);
-                new Minion(600, 60);
-                new Minion(900, 60);
-                break;
-            case 2:
-                new Minion(300, 60);
-                new Sniper(600, 70);
-                new Minion(900,60);
-                break;
-            case 3:
-                new Minion(300, 150);
-                new Sniper(300, 70);
-                new Sniper(900, 70);
-                new Minion(900, 150);
-                break;
-            case 4:
-                new Sniper(300, 70);
-                new Sniper(600, 70);
-                new Sniper(900, 70);
-                new Minion(450, 120);
-                new Minion(750, 120);
-                break;
-            case 5:
-                new Boss1(600, 310);
-                break;
-            default:
-                console.log("error : default reached in stage.js");
+        // switch use to launch the stage's different waves
+        
+    }
+
+    static nextStage() {
+        if(Stage.stageTab[1] != null) {
+            Stage.stageTab.splice(0,1);
+            Stage.stageTab[0].getNextWave();
         }
     }
+
 }

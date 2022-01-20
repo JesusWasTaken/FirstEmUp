@@ -65,7 +65,7 @@ canvas {
   border-radius: 10px;
   position: absolute;
   left: 45vw;
-  top: 47vh;
+  top: 360px;
   padding: 20px;
 }
 
@@ -86,7 +86,7 @@ button {
   border-radius: 10px;
   position: absolute;
   left: 40vw;
-  top: 45vh;
+  top: 340px;
   padding: 20px;
   text-align: center;
   display: none;
@@ -100,7 +100,7 @@ button {
   border-radius: 10px;
   position: absolute;
   left: 43vw;
-  top: 45vh;
+  top: 330px;
   padding: 20px;
   display: none;
 }

@@ -1,18 +1,11 @@
 import Entity from './entity';
 import Bullets from './bullets';
 import Player from './player';
-import patterns from './assets/patterns';
-
-
-let scoreDisplay = document.getElementById('score');
+import { defaultPatterns } from './assets/patterns';
 
 class Enemy extends Entity {
     static count = 0;
-    static enemyTab = [
-        [], // minions subArray
-        [], // snipers subArray
-        [] // boss subArray
-    ];
+    static enemyTab = [];
     constructor(posX, posY,radius, speed, hp, onHit) {
         super(posX, posY);
         this.radius = radius;
@@ -21,10 +14,11 @@ class Enemy extends Entity {
         this.onHit = onHit;
         this.id = Enemy.count;
         Enemy.count ++;
-        this.bottomBorder = Entity.canvas.height - Player.getInstance().radius*2.1;
+        this.bottomBorder = Entity.canvas.height - 120;
         this.currentMove = null;
+        this.pattern = defaultPatterns;
         this.getNextMove();
-        this.push();
+        Enemy.enemyTab.push(this)
         this.value = 10;
     }
 
@@ -35,7 +29,7 @@ class Enemy extends Entity {
     getNextMove() {
         if (this.currentMove == null || this.currentMove.length <= this.state) {
             this.state = 0;
-            this.currentMove = patterns[Math.floor(Math.random()*patterns.length)];
+            this.currentMove = this.pattern[Math.floor(Math.random()*this.pattern.length)];
         }
         this.move(this.currentMove[this.state]);
         this.state ++;
@@ -44,35 +38,24 @@ class Enemy extends Entity {
     damage() {
         this.hp -= 1;
         if (this.hp == 0) {
-            this.addScore();
-            scoreDisplay.innerHTML = Player.score;
+            Player.getInstance().addScore(this.value);
             this.delete();  
         }
     }
 
-    addScore() {
-        Player.score += this.value;
-    }
-
-    push() {
-        // ajouter un enemy a son tableau spécifique
-    }
-
     delete() {
-        for (let i = 0; i<Enemy.enemyTab.length;i++) {
-            for (let j = 0; j<Enemy.enemyTab[i].length;j++) {
-                if(this.id == Enemy.enemyTab[i][j].id) {
-                    Enemy.enemyTab[i].splice(j,1);
+        for (let i = 0; i<Enemy.enemyTab.length;i++) {  
+            if(this.id == Enemy.enemyTab[i].id) {
+                Enemy.enemyTab.splice(i,1);
                     delete this;
                     return;
-                }
             }
         }
     }
 
     static isEmpty() {
         for (let i = 0; i < Enemy.enemyTab.length;i++) {
-            if (Enemy.enemyTab[i][0] != null) {
+            if (Enemy.enemyTab != null) {
                 return false;
             }
         }

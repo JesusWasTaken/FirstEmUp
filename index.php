@@ -46,7 +46,7 @@
 
     </div>
     <div id="pauseIndicator">
-        Game Paused.<br> Press "P" to unpause
+        Game Paused<br> Press "P" to unpause
     </div>
     <div id="pressStart">
         Start
@@ -65,9 +65,7 @@
     <div id="hidden">
         <img id="myImage" src="/Images/ship.png">
         <img id="enemyImg" src="Images/enemyIcon.png">
-        <img id="bossImg" src="Images/bossImg.png">
     </div>
-
 
     <script type="module" src="script.js"></script>
 </body>
