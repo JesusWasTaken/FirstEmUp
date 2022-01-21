@@ -1,5 +1,6 @@
 import Entity from "../entity";
 
+let trollImg = document.getElementById("trollImg");
 export default class Item extends Entity {
 
     static itemsTab = [];
@@ -11,6 +12,7 @@ export default class Item extends Entity {
         Item.count ++;
         this.id = Item.count;
         this.onHit = 0;
+        this.image = trollImg;
         Item.itemsTab.push(this);
     }
 

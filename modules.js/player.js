@@ -20,6 +20,7 @@ export default class Player extends Entity {
         this.isBoostAvailable = true;
         this.initSpeed = this.speed;
         this.isSlowable = true;
+        this.weapon = "base";
     }
 
     // fonction d'accès au singleton ou vaisseau joueur
@@ -46,7 +47,19 @@ export default class Player extends Entity {
     // fonction de tir, qui instancie une bullet a la position actuelle
     shoot() {
         if (this.isFirable) {
-            new PlayerBullets(this.posX, this.posY, false, "up");
+            switch (this.weapon) {
+                case "base":
+                    new PlayerBullets(this.posX, this.posY, false, "up");
+                    break;
+                case "sideCannon":
+                    new PlayerBullets(this.posX-30, this.posY, false, "up");
+                    new PlayerBullets(this.posX, this.posY, false, "up");
+                    new PlayerBullets(this.posX+30, this.posY, false, "up");
+                    break;
+                default:
+                    new PlayerBullets(this.posX, this.posY, false, "up");
+                    console.log("default shooting at player.shoot");
+            }
             this.slowed(true); 
             this.isFirable = false;
             setTimeout(() => {

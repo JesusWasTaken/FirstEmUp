@@ -41,7 +41,7 @@
                 <p id="boss"></p>
             </div>
         </div>
-        <canvas width="1200" height="772"></canvas>
+        <canvas width="1152" height="648"></canvas>
     </div>
 
     <div id="pauseIndicator">
@@ -68,6 +68,7 @@
         <img id="myImage" src="/Images/ship.png">
         <img id="enemyImg" src="Images/enemyIcon.png">
         <img id="healImg" src="Images/hp.png">
+        <img id="trollImg" src="Images/trollImg.png">
     </div>
 
     <script type="module" src="script.js"></script>

@@ -3,11 +3,13 @@ import Bullets from "../bullets";
 import Player from "../player";
 import Minion from "./minion";
 import Targeted from "../bulletTypes/targeted";
+import SideCannon from "../items/sideCanon";
 import { boss1Patterns } from "../assets/patterns";
+import Minigun from "../items/minigun";
 
 export default class Boss1 extends Enemy {
     constructor(posX, posY) {
-        super(posX, posY, 150, 3, 250, 10);
+        super(posX, posY, 150, 3, 25, 10);
         this.value = 1000;
         this.phase = 1;
         this.threshold = this.hp / 2;
@@ -48,6 +50,8 @@ export default class Boss1 extends Enemy {
         if (this.hp == 0) {
             Player.getInstance().addScore(this.value);
             Player.getInstance().attackSpeed *= 1.5;
+            new SideCannon(450, 70);
+            new Minigun(750,70);
             this.delete();  
         }
     }
