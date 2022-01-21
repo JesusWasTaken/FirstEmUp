@@ -22,6 +22,7 @@ class Enemy extends Entity {
         this.getNextMove();
         this.value = 10;
         this.image = enemyImg;
+        this.shootTimeout = null;
         Enemy.enemyTab.push(this)
     }
 
@@ -52,6 +53,7 @@ class Enemy extends Entity {
             if(this.id == Enemy.enemyTab[i].id) {
                 Enemy.enemyTab.splice(i,1);
                     delete this;
+                    clearTimeout(this.shootTimeout);
                     return;
             }
         }

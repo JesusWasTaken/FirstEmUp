@@ -226,7 +226,7 @@ function loop() {
 
         for (let i = 0; i < Enemy.enemyTab.length; i++) {
             
-            setTimeout(() => {
+            Enemy.enemyTab[i].shootTimeout = setTimeout(() => {
                 Enemy.enemyTab[i].shoot();
             }, Math.floor(Math.random()*800));
             

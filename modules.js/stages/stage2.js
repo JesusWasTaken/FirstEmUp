@@ -46,7 +46,6 @@ export default class Stage2 extends Stage {
                 new Cruiser(600, 90);
                 break;
             case 6:
-                new Minion(100, 60);
                 new Sniper(200, 60);
                 new Speeder(300, 70);
                 new Minion(400, 60);
@@ -54,7 +53,6 @@ export default class Stage2 extends Stage {
                 new Minion(800, 60);
                 new Speeder(900, 70);
                 new Sniper(1000, 60);
-                new Minion(1100, 60);
                 break;
             case 7:
                 new Minion(400, 120);
