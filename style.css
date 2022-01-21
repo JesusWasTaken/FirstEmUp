@@ -55,6 +55,10 @@ canvas {
   height: auto;
 }
 
+#hidden {
+  display: none;
+}
+
 /************ BUTTONS *************/
 
 #pressStart {

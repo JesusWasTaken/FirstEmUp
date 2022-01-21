@@ -63,8 +63,6 @@ function gameOver() {
 
 /*================= afficher les entités =========*/
 
-enemyImg.style.display = "none";
-img.style.display = "none";
 
 function drawPlayer() {
     // update du drawPlayer, il a simplement a récupérer les coordonnées actuelles
