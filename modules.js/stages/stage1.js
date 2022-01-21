@@ -3,6 +3,8 @@ import Boss1 from "../ennemies/boss1";
 import Corvete from "../ennemies/corvete";
 import Minion from "../ennemies/minion";
 import Sniper from "../ennemies/sniper";
+import SideCannon from "../items/sideCanon";
+import Minigun from "../items/minigun";
 
 
 export default class Stage1 extends Stage {

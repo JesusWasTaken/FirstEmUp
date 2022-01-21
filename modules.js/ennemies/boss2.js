@@ -35,8 +35,8 @@ export default class Boss2 extends Enemy {
         }, 400);
     }
 
-    damage() {
-        this.hp -= 1;
+    damage(x) {
+        this.hp -= x;
         if (this.hp <= this.threshold) {
             this.phaseUp();
         }

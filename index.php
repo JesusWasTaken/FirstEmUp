@@ -42,7 +42,7 @@
                 <p id="boss"></p>
             </div>
         </div>
-        <canvas width="1152" height="648"></canvas>
+        <canvas width="1400" height="772"></canvas>
     </div>
 
     <div id="pauseIndicator">

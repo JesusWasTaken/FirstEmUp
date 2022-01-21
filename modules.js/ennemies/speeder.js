@@ -9,10 +9,10 @@ export default class Speeder extends Enemy {
         this.value = 120;
     }
 
-    damage() {
-        this.hp -= 1;
-        this.speed += 1;
-        if(this.hp == 0) {
+    damage(x) {
+        this.hp -= x;
+        this.speed += x;
+        if(this.hp <= 0) {
             Player.getInstance().addScore(this.value);
             this.delete();
         }

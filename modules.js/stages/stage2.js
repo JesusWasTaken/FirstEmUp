@@ -5,6 +5,9 @@ import Minion from "../ennemies/minion";
 import Sniper from "../ennemies/sniper";
 import Boss2 from "../ennemies/boss2";
 import Speeder from "../ennemies/speeder";
+import Minigun from "../items/minigun";
+import BigCaliber from "../items/bigCaliber";
+import SideCannon from "../items/sideCanon";
 
 
 export default class Stage2 extends Stage {
@@ -13,6 +16,9 @@ export default class Stage2 extends Stage {
     spawnWave() {
         switch(this.wave) {
             case 1:
+                new BigCaliber(300, 70);
+                new Minigun(600, 70);
+                new SideCannon(900, 70);
                 new Minion(300, 60);
                 new Speeder(600, 70);
                 new Minion(900, 60);

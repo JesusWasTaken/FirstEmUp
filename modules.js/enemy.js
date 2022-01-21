@@ -38,9 +38,9 @@ class Enemy extends Entity {
         this.state ++;
     }
 
-    damage() {
-        this.hp -= 1;
-        if (this.hp == 0) {
+    damage(x) {
+        this.hp -= x;
+        if (this.hp <= 0) {
             this.diceRoll();
             Player.getInstance().addScore(this.value);
             this.delete();  

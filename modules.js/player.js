@@ -1,5 +1,6 @@
 import Entity from './entity';
 import PlayerBullets from './bulletTypes/playerBullets';
+import StrongerBullets from './bulletTypes/strongerBullets';
 
 let scoreDisplay = document.getElementById('score');
 
@@ -56,6 +57,9 @@ export default class Player extends Entity {
                     new PlayerBullets(this.posX, this.posY, false, "up");
                     new PlayerBullets(this.posX+30, this.posY, false, "up");
                     break;
+                case "bigCaliber":
+                    new StrongerBullets(this.posX, this.posY, false, "up");
+                    break;
                 default:
                     new PlayerBullets(this.posX, this.posY, false, "up");
                     console.log("default shooting at player.shoot");
@@ -63,9 +67,11 @@ export default class Player extends Entity {
             this.slowed(true); 
             this.isFirable = false;
             setTimeout(() => {
-                this.slowed(false);
                 this.isFirable = true;
             },120/this.attackSpeed);
+            setTimeout(() => {
+                this.slowed(false);
+            },120);
         }
     }
 
