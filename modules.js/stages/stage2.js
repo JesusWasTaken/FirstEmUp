@@ -81,4 +81,8 @@ export default class Stage2 extends Stage {
                 Stage.nextStage();
         }
     }
+
+    toString() {
+        return "Stage 2."+this.wave;
+    }
 }

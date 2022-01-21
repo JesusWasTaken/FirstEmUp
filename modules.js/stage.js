@@ -1,4 +1,4 @@
-
+let stageIndic = document.getElementById("stageIndic");
 export default class Stage {
 
     static stageTab = [];
@@ -18,6 +18,7 @@ export default class Stage {
                 this.isSpawnable = true;
             },1000);
         }
+        stageIndic.innerHTML = Stage.stageTab[0].toString();
     }
 
     spawnWave() {

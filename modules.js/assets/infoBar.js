@@ -1,3 +1,5 @@
+import Stage from "../stage";
+
 export function displayPlayerHp(hp) {    
     let power = document.getElementById('power');
     power.innerHTML = "";

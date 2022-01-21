@@ -34,6 +34,7 @@
                 <p>Score :
                     <span id="score"></span>
                 </p>
+                <p id="stageIndic"></p>
                 <div id="power">                 
                 </div>
             </div>
