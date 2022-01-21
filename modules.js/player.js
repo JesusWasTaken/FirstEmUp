@@ -32,7 +32,11 @@ export default class Player extends Entity {
     }
 
     damage(x) {
-        this.hp -= x;
+        if (this.hp - x >= 3) {
+            this.hp = 3;
+        } else {
+            this.hp -= x;
+        }
         this.multiplier = 1;
         if (this.hp <= 0) {
             Player.inGame = false;

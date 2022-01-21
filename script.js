@@ -5,13 +5,14 @@ import { displayPlayerHp } from './modules.js/assets/infoBar';
 import Stage from './modules.js/stage';
 import Stage1 from './modules.js/stages/stage1';
 import Stage2 from './modules.js/stages/stage2';
+import Heal from './modules.js/items/item';
+import Item from './modules.js/items/item';
 
 /*============= VARIABLES ============================*/
 
 let scoreDisplay = document.getElementById('score');
 let startBtn = document.getElementById("pressStart");
 let img = document.getElementById("myImage");
-let enemyImg = document.getElementById("enemyImg");
 let info = document.getElementById('infoGames');
 let pause = document.getElementById("pauseIndicator");
 let isPaused = false;
@@ -133,7 +134,7 @@ function drawBullets() {
     }
 }
 
-function moveBullets(tab) {
+function moveObjects(tab) {
     for (let i = 0; i < tab.length; i++) {
         tab[i].move(tab[i].direction);
     }
@@ -141,13 +142,12 @@ function moveBullets(tab) {
 
 /*================== FONCTIONS ENNEMIS =============================*/
 
-function drawEnemies() {
+function drawEntities(tab) {
 
-    // affiche les boss, seront toujours le dernier sous tableau de enemyTab
-    for (let i = 0; i < Enemy.enemyTab.length; i++) {
-        let current = Enemy.enemyTab[i];
+    for (let i = 0; i < tab.length; i++) {
+        let current = tab[i];
         ctx.beginPath();
-        ctx.drawImage(enemyImg, current.posX - current.radius, current.posY - current.radius, current.radius*2, current.radius*2);
+        ctx.drawImage(current.image, current.posX - current.radius, current.posY - current.radius, current.radius*2, current.radius*2);
         ctx.closePath();
     }
 
@@ -173,6 +173,10 @@ function isCollision(entity, tab) {
             entity.damage(tab[i].onHit);
             if (tab[i] instanceof Bullets) {
                 tab.splice(i,1);
+            }
+            if (tab[i] instanceof Item) {
+                tab[i].trigger();
+                tab.splice(i, 1);
             }
         }
     }
@@ -208,11 +212,14 @@ function loop() {
     }
     isCollision(player, Enemy.enemyTab);
     moveEnemies();
-    drawEnemies();
-    moveBullets(Bullets.goodBullets);
-    moveBullets(Bullets.badBullets);
+    drawEntities(Enemy.enemyTab);
+    drawEntities(Item.itemsTab);
+    moveObjects(Bullets.goodBullets);
+    moveObjects(Bullets.badBullets);
+    moveObjects(Item.itemsTab);
     drawBullets();
     isCollision(player, Bullets.badBullets);
+    isCollision(player, Item.itemsTab);
 
     // actions les 60 frames (1sec), Stockage dans un tableau
     if (count % 60 == 0) {

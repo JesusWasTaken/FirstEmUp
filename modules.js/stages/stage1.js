@@ -3,7 +3,6 @@ import Boss1 from "../ennemies/boss1";
 import Corvete from "../ennemies/corvete";
 import Minion from "../ennemies/minion";
 import Sniper from "../ennemies/sniper";
-import Speeder from "../ennemies/speeder";
 
 
 export default class Stage1 extends Stage {

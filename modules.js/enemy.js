@@ -2,7 +2,9 @@ import Entity from './entity';
 import Bullets from './bullets';
 import Player from './player';
 import { defaultPatterns } from './assets/patterns';
+import Heal from './items/heal';
 
+let enemyImg = document.getElementById("enemyImg");
 class Enemy extends Entity {
     static count = 0;
     static enemyTab = [];
@@ -18,8 +20,9 @@ class Enemy extends Entity {
         this.currentMove = null;
         this.pattern = defaultPatterns;
         this.getNextMove();
-        Enemy.enemyTab.push(this)
         this.value = 10;
+        this.image = enemyImg;
+        Enemy.enemyTab.push(this)
     }
 
     shoot() {
@@ -38,6 +41,7 @@ class Enemy extends Entity {
     damage() {
         this.hp -= 1;
         if (this.hp == 0) {
+            this.diceRoll();
             Player.getInstance().addScore(this.value);
             this.delete();  
         }
@@ -60,6 +64,13 @@ class Enemy extends Entity {
             }
         }
         return true;
+    }
+
+    diceRoll() {
+        let roll = Math.floor(Math.random()*100);
+        if (roll <= 10) {
+            new Heal(this.posX, this.posY);
+        }
     }
 }
 

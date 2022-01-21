@@ -67,6 +67,7 @@
     <div id="hidden">
         <img id="myImage" src="/Images/ship.png">
         <img id="enemyImg" src="Images/enemyIcon.png">
+        <img id="healImg" src="Images/hp.png">
     </div>
 
     <script type="module" src="script.js"></script>
