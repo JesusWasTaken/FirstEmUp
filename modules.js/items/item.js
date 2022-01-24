@@ -32,4 +32,8 @@ export default class Item extends Entity {
             }
         }
     }
+
+    static clearTab() {
+        Item.itemsTab.length = 0;
+    }
 }

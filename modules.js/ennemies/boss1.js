@@ -6,6 +6,7 @@ import Targeted from "../bulletTypes/targeted";
 import SideCannon from "../items/sideCanon";
 import { boss1Patterns } from "../assets/patterns";
 import Minigun from "../items/minigun";
+import BigCaliber from "../items/bigCaliber";
 
 export default class Boss1 extends Enemy {
     constructor(posX, posY) {
@@ -50,8 +51,10 @@ export default class Boss1 extends Enemy {
         if (this.hp == 0) {
             Player.getInstance().addScore(this.value);
             Player.getInstance().attackSpeed *= 1.5;
-            new SideCannon(450, 70);
-            new Minigun(750,70);
+            new BigCaliber(300, 70);
+            new SideCannon(600, 70);
+            new Minigun(900,70);
+
             this.delete();  
         }
     }

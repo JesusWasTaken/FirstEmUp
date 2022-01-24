@@ -10,5 +10,6 @@ export default class BigCaliber extends Item {
     trigger() {
         Player.getInstance().attackSpeed /= 8;
         Player.getInstance().weapon = "bigCaliber";
+        Item.clearTab();
     }
 }

@@ -9,5 +9,6 @@ export default class Minigun extends Item {
 
     trigger() {
         Player.getInstance().attackSpeed += 1,5;
+        Item.clearTab();
     }
 }

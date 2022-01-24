@@ -10,5 +10,6 @@ export default class SideCannon extends Item {
     trigger() {
         Player.getInstance().weapon = "sideCannon";
         Player.getInstance().attackSpeed /=2;
+        Item.clearTab();
     }
 }

@@ -184,7 +184,7 @@ function isCollision(entity, tab) {
 
 // Initialisation des données de jeu
 
-//new Stage1();
+new Stage1();
 new Stage2();
 
 /*==================== FONCTIONS BOUCLE DE JEU ======================================*/
